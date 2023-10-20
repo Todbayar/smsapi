@@ -2,8 +2,9 @@
 
 import serial
 import time
-import sys
 import socket
+from threading import Thread
+import json
 
 ser = serial.Serial("COM8",115200)
 ser.flushInput()
@@ -40,39 +41,43 @@ def SendShortMessage(phone_number,text_message):
 	else:
 		print('error%d'%answer)
 
+def on_new_client(c_socket, c_addr):
+	while True:
+		request = c_socket.recv(1024)
+		request = request.decode("utf-8") # convert bytes to string
+		if request.lower() == "close":
+			c_socket.send("closed".encode("utf-8"))
+			break
+		
+		reqObj = json.loads(request)
+		if reqObj["action"] == "sms":
+			SendShortMessage(reqObj["phone"],reqObj["msg"])
+
+		print(f"Received: {request}")	#here must be AT command
+
+		response = "accepted".encode("utf-8")
+		c_socket.send(response)
+
+	c_socket.close()
+	print(f"Connection to client closed:{c_addr[0]}:{c_addr[1]}")
+
 def run_server():
 	server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	server_ip = "127.0.0.1"
+	server_ip = "localhost"
 	port = 1987
 	server.bind((server_ip, port))
 	server.listen(0)
 	print(f"SMS gateway listening on {server_ip}:{port}")
 	
 	# waiting for a client
-	client_socket, client_address = server.accept()
-	print(f"Accepted connection from {client_address[0]}:{client_address[1]}")
-	
 	while True:
-		request = client_socket.recv(1024)
-		request = request.decode("utf-8") # convert bytes to string
-		if request.lower() == "close":
-			client_socket.send("closed".encode("utf-8"))
-			break
-		
-		
-		print(f"Received: {request}")	#here must be AT command
-		
-		response = "accepted".encode("utf-8")
-		client_socket.send(response)
+		client_socket, client_address = server.accept()
+		print(f"Connection from {client_address[0]}:{client_address[1]}")
+		# on_new_client(client_socket, client_address)
+		thread = Thread(target=on_new_client, args=(client_socket, client_address))
+		thread.start()
 
-	client_socket.close()
-	print("Connection to client closed")
 	server.close()
+	ser.close()
 
 run_server()
-
-# try:
-	# SendShortMessage("99213557","hello world, this is from py.")
-
-# except :
-#     ser.close()
