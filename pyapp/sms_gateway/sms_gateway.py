@@ -59,6 +59,7 @@ def run_server():
 			client_socket.send("closed".encode("utf-8"))
 			break
 		
+		
 		print(f"Received: {request}")	#here must be AT command
 		
 		response = "accepted".encode("utf-8")
