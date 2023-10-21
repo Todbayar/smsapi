@@ -4,9 +4,9 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="section-title">
-					<h2>We Provide You The Best Treatment In Resonable Price</h2>
-					<img src="img/section-img.png" alt="#">
-					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+					<h2>SMS api үнийн жагсаалт</h2>
+					<img src="img/separator.png" style="width:250px; height:2px">
+					<p>Анхаарах! 1 SMS = 1 Кредит</p>
 				</div>
 			</div>
 		</div>
@@ -17,23 +17,15 @@
 					<!-- Table Head -->
 					<div class="table-head">
 						<div class="icon">
-							<i class="icofont icofont-ui-cut"></i>
+							<img src="img/logo_sms_small.png" />
 						</div>
-						<h4 class="title">Plastic Suggery</h4>
+						<h4 class="title">1000 кредит</h4>
 						<div class="price">
-							<p class="amount">$199<span>/ Per Visit</span></p>
+							<p class="amount">2500₮<span></span></p>
 						</div>	
 					</div>
-					<!-- Table List -->
-					<ul class="table-list">
-						<li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-						<li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Nullam interdum enim</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
-					</ul>
 					<div class="table-bottom">
-						<a class="btn" href="#">Book Now</a>
+						<a class="btn" href="#">Цэнэглэх</a>
 					</div>
 					<!-- Table Bottom -->
 				</div>
@@ -45,23 +37,15 @@
 					<!-- Table Head -->
 					<div class="table-head">
 						<div class="icon">
-							<i class="icofont icofont-tooth"></i>
+							<img src="img/logo_sms_small.png" />
 						</div>
-						<h4 class="title">Teeth Whitening</h4>
+						<h4 class="title">2000 кредит</h4>
 						<div class="price">
-							<p class="amount">$299<span>/ Per Visit</span></p>
+							<p class="amount">7000₮<span></span></p>
 						</div>	
 					</div>
-					<!-- Table List -->
-					<ul class="table-list">
-						<li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-						<li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-						<li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
-						<li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
-					</ul>
 					<div class="table-bottom">
-						<a class="btn" href="#">Book Now</a>
+						<a class="btn" href="#">Цэнэглэх</a>
 					</div>
 					<!-- Table Bottom -->
 				</div>
@@ -73,23 +57,15 @@
 					<!-- Table Head -->
 					<div class="table-head">
 						<div class="icon">
-							<i class="icofont-heart-beat"></i>
+							<img src="img/logo_sms_small.png" />
 						</div>
-						<h4 class="title">Heart Suggery</h4>
+						<h4 class="title">5000 кредит</h4>
 						<div class="price">
-							<p class="amount">$399<span>/ Per Visit</span></p>
+							<p class="amount">20000₮<span></span></p>
 						</div>	
 					</div>
-					<!-- Table List -->
-					<ul class="table-list">
-						<li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-						<li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-						<li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
-						<li><i class="icofont icofont-ui-check"></i>Donec ultricies metus</li>
-						<li><i class="icofont icofont-ui-check"></i>Pellentesque eget nibh</li>
-					</ul>
 					<div class="table-bottom">
-						<a class="btn" href="#">Book Now</a>
+						<a class="btn" href="#">Цэнэглэх</a>
 					</div>
 					<!-- Table Bottom -->
 				</div>

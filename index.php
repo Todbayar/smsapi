@@ -66,18 +66,7 @@ require "language/mon.php";
 		
 		<!-- Get Pro Button -->
 		<ul class="pro-features">
-			<a class="get-pro" href="#">Get Pro</a>
-			<li class="big-title">Pro Version Available on Themeforest</li>
-			<li class="title">Pro Version Features</li>
-			<li>2+ premade home pages</li>
-			<li>20+ html pages</li>
-			<li>Color Plate With 12+ Colors</li>
-			<li>Sticky Header / Sticky Filters</li>
-			<li>Working Contact Form With Google Map</li>
-			<div class="button">
-				<a href="http://preview.themeforest.net/item/mediplus-medical-and-doctor-html-template/full_screen_preview/26665910?_ga=2.145092285.888558928.1591971968-344530658.1588061879" target="_blank" class="btn">Pro Version Demo</a>
-				<a href="https://themeforest.net/item/mediplus-medical-and-doctor-html-template/26665910" target="_blank" class="btn">Buy Pro Version</a>
-			</div>
+			<a class="get-pro" href="#">FB</a>
 		</ul>
 	
 		<!-- Header Area -->
@@ -121,10 +110,10 @@ require "language/mon.php";
 									<nav class="navigation">
 										<ul class="nav menu">
 											<li class="active"><a href="index.php">Нүүр</i></a></li>
-											<li><a href="#">Нэвтрэх</a></li>
+											<li><a href="?page=signin.php">Нэвтрэх</a></li>
 											<li><a href="?page=instructions.php">Заавар</a></li>
-											<li><a href="#">Хэрэглэгч</a></li>
-											<li><a href="#">Төлбөр</a></li>
+											<li><a href="?page=profile">Хэрэглэгч</a></li>
+											<li><a href="?page=price.php">Төлбөр</a></li>
 										</ul>
 									</nav>
 								</div>
@@ -157,64 +146,12 @@ require "language/mon.php";
 					<div class="row">
 						<div class="col-lg-3 col-md-6 col-12">
 							<div class="single-footer">
-								<h2>About Us</h2>
-								<p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore dolore magna.</p>
+								<h2>Бидний тухай</h2>
 								<!-- Social -->
 								<ul class="social">
 									<li><a href="#"><i class="icofont-facebook"></i></a></li>
-									<li><a href="#"><i class="icofont-google-plus"></i></a></li>
-									<li><a href="#"><i class="icofont-twitter"></i></a></li>
-									<li><a href="#"><i class="icofont-vimeo"></i></a></li>
-									<li><a href="#"><i class="icofont-pinterest"></i></a></li>
 								</ul>
 								<!-- End Social -->
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-12">
-							<div class="single-footer f-link">
-								<h2>Quick Links</h2>
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-12">
-										<ul>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Cases</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Other Links</a></li>	
-										</ul>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<ul>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Consuling</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Finance</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQ</a></li>
-											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>	
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-12">
-							<div class="single-footer">
-								<h2>Open Hours</h2>
-								<p>Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod tempor incididunt.</p>
-								<ul class="time-sidual">
-									<li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-									<li class="day">Saturday <span>9.00-18.30</span></li>
-									<li class="day">Monday - Thusday <span>9.00-15.00</span></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-12">
-							<div class="single-footer">
-								<h2>Newsletter</h2>
-								<p>subscribe to our newsletter to get allour news in your inbox.. Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
-								<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-									<input name="email" placeholder="Email Address" class="common-input" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Your email address'" required type="email">
-									<button class="button"><i class="icofont icofont-paper-plane"></i></button>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -227,7 +164,7 @@ require "language/mon.php";
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
 							<div class="copyright-content">
-								<p>© Copyright 2018  |  All Rights Reserved by <a href="https://www.wpthemesgrid.com" target="_blank">wpthemesgrid.com</a> </p>
+								<p>© Copyright 2023  |  All Rights Reserved by</p>
 							</div>
 						</div>
 					</div>
