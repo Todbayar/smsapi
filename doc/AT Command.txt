@@ -1,0 +1,11 @@
+AT+CMGL="ALL"		//LIST ALL SMS IN INBOX
+ATD99213557;		//CALL PHONE
+
+//send sms
+AT+CMGF=1
+AT+CMGS="99213557" 	//> гарч ирхээр текстээ бичээд enter дараад дараа нь 1A (hex) илгээнэ
+
+//ULDEGDEL NEGJEE HARAH
+AT+CSCS="GSM"
+AT+CMGF=1
+AT+CUSD=1,"*211#",15
