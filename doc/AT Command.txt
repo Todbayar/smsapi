@@ -1,4 +1,7 @@
+AT+CLIP=1		//yamar dugaaraas duudlaga hiij baigaag harah
+
 AT+CMGL="ALL"		//LIST ALL SMS IN INBOX
+AT+CMGD=0		//remove sms by index
 ATD99213557;		//CALL PHONE
 
 //send sms
