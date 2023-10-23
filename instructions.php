@@ -6,7 +6,6 @@
 					<h2>API заавар</h2>
 					<img src="img/separator.png" style="width:250px; height:2px">
 					<p>SMS api хэрхэн ашиглах тухай заавар</p>
-					<p>Анхаарах! Крилл үсгээр мессеж илгээх боломжгүй.</p>
 				</div>
 			</div>
 		</div>
@@ -35,7 +34,11 @@
 					<tr>
 						<td>msg</td>
 						<td>sain baina uu? ene bol test sms msg</td>
-						<td>Хүлээн авагчруу илгээх текст мессеж</td>
+						<td>
+							Хүлээн авагчруу илгээх текст мессеж.<br/>
+							<a style="color:#e83e8c">Анхаарах! Крилл (UTF-8) үсгээр мессеж илгээх боломжгүй.</a> 
+							Зөвхөн латин (ascii)-аар илгээнэ үү.
+						</td>
 					</tr>
 				</table>
 			</div>
