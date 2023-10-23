@@ -4139,3 +4139,12 @@ table.instruction th, td{
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.round_corner_blue {
+    font-size: 14px;
+    background: #1A76D1;
+    color: #fff;
+    padding: 4px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+}

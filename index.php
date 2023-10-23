@@ -177,13 +177,14 @@ require "language/mon.php";
 											<li class="signin"><a href="?page=signin.php">Нэвтрэх</a></li>
 											<?php
 											}
-											else {
+											//else {
 											?>
+											<li class="testdrive"><a href="?page=testdrive.php">Шалгах</a></li>
 											<li class="instructions"><a href="?page=instructions.php">Заавар</a></li>
 											<li class="profile"><a href="?page=profile">Хэрэглэгч</a></li>
-											<li class="price"><a href="?page=price.php">Төлбөр</a></li>
+											<li class="price"><a href="?page=price.php">Цэнэглэх</a></li>
 											<?php
-											}
+											//}
 											?>
 										</ul>
 									</nav>

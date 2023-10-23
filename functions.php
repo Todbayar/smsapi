@@ -1,5 +1,6 @@
 <?php
 function send_sms($phone, $msg, $address){
+	//sending to remote python script with ngrok
 	$fp = stream_socket_client($address, $errno, $errstr, 30);
 	if (!$fp) {
 		echo "$errstr ($errno)";
