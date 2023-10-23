@@ -303,7 +303,7 @@ Version:	1.1
 		/*====================
 			Google Maps JS
 		======================*/
-		var map = new GMaps({
+		/*var map = new GMaps({
 				el: '#map',
 				lat: 23.011245,
 				lng: 90.884780,
@@ -317,7 +317,7 @@ Version:	1.1
 				content: '<p>welcome to Medipro</p>'
 			}
 		
-		});
+		});*/
 	});
 	
 	/*====================
