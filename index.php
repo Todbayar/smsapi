@@ -1,6 +1,41 @@
 <?php
-require "language/mon.php";
+include "mysql_config.php";
+include "language/mon.php";
+
+if(isset($_GET["token"])){
+	$query = "SELECT * FROM validater WHERE token='".$_GET["token"]."' LIMIT 1";
+	$result = $conn->query($query);
+	if(mysqli_num_rows($result) > 0){
+		$row = mysqli_fetch_array($result);
+		$userID = $row["user"];
+		$query = "UPDATE user SET isactive=1 WHERE id=".$userID;
+		if($conn->query($query)){
+			$query = "DELETE FROM validater WHERE user=".$userID." AND type=0";
+			if($conn->query($query)){
+				$cookieTime = time() + (86400 * 30);	//30 day, 86400=1
+				setcookie("userID", $userID, $cookieTime, "/");
+				header("location:./");
+			}
+			else {
+				?>
+				<script>failVerifyingEmail(1);</script>
+				<?php	
+			}
+		}
+		else {
+			?>
+			<script>failVerifyingEmail(2);</script>
+			<?php
+		}
+	}
+	else {
+		?>
+		<script>failVerifyingEmail(3);</script>
+		<?php
+	}
+}
 ?>
+
 <!doctype html>
 <html>
     <head>
@@ -104,11 +139,14 @@ require "language/mon.php";
 				}
 			}
 		}
+			
+		function failVerifyingEmail(errorID){
+			alert("Таны имэйлийг баталгаажуулахад алдаа гарлаа! ("+errorID+")");
+		}
 		</script>
 		
     </head>
     <body>
-	
 		<!-- Preloader -->
         <div class="preloader">
             <div class="loader">
@@ -140,9 +178,15 @@ require "language/mon.php";
 						</div>
 						<div class="col-lg-6 col-md-7 col-12">
 							<!-- Top Contact -->
-							<ul class="top-contact">
-								<li><i class="fa fa-phone"></i>+976 99213557</li>
-								<li><i class="fa fa-envelope"></i><a href="mailto:atodko0513@gmail.com">atodko0513@gmail.com</a></li>
+							<ul class="top-contact" style="display: flex">
+								<li style="display: flex; align-items: center">
+									<i class="fa fa-phone"></i>
+									<a href="tel:+97699213557">(+976)99213557</a>
+								</li>
+								<li style="display: flex; align-items: center">
+									<i class="fa fa-envelope"></i>
+									<a href="mailto:misheelgamestudio@gmail.com">misheelgamestudio@gmail.com</a>
+								</li>
 							</ul>
 							<!-- End Top Contact -->
 						</div>

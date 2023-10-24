@@ -16,8 +16,23 @@ function signup(){
 	const patternEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 	
 	if(pass1==pass2 && patternEmail.test(email)){
+		$(this).text("Түр хүлээнэ үү...")
 	   	$.post("mysql_signup.php", {"email":email, "pass":pass1}).done(function(response){
-			console.log("<result>:"+response);
+			console.log("<signup>:"+response);
+			if(response!="FAIL"){
+				console.log("<res>:"+response);
+				if(response==1){
+					$(".sign-msg").show();
+					$(".signup-form").hide();
+					$(".signin-form").hide();  
+			   	}
+				else {
+					alert("Таны бүртгүүлэхэд алдаа гарлаа! (1)");   
+			   	}
+		   	}
+			else {
+				alert("Таны бүртгүүлэхэд алдаа гарлаа! (2)");
+			}
 		});
    	}
 	else if(pass1!=pass2){
@@ -66,11 +81,14 @@ function signup(){
 									<i class="icofont-ui-password"></i>
 									<input type="text" name="user_signup_password2" placeholder="Нууц үг давтах" required="required" type="password">
 								</div>
-								<div class="form-group button" style="width: 95%">	
+								<div class="form-group button" style="width: 95%">
 									<button type="submit" class="btn primary" onClick="signup()">Бүртгүүлэх</button>
 									<a href="javascript:showSignin()" style="float: right">Буцах</a>
 								</div>
 							</div>
+						</div>
+						<div class="sign-msg" style="display: none">
+							<h6>Таны имейлрүү баталгаажуулах линк илгээсэн. Та имейлээ шалгана уу.</h6>
 						</div>
 					</div>
 				</div>
