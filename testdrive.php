@@ -4,8 +4,9 @@ function testSmsTextSend(){
 	const phone = $("input[name='testdrive_phone']").val();
 	const msg = $("textarea[name='testdrive_message']").val();
 	console.log("<input_msg>:"+msg);
-	$.post("process.php", {"token":"", "phone":phone, "msg":msg, "action":"sms_send"}).done(function(response){
-		console.log("<testSmsTextSend>:"+response);
+	
+	$.post("process.php", {"token":"", "phone":phone, "msg":msg, "action":"sms_text_send"}).done(function(response){
+		console.log(response);
 	});
 }
 </script>
