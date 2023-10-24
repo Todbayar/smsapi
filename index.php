@@ -1,6 +1,6 @@
 <?php
 include "mysql_config.php";
-include "language/mon.php";
+include_once "language/mon.php";
 
 if(isset($_GET["token"])){
 	$query = "SELECT * FROM validater WHERE token='".$_GET["token"]."' LIMIT 1";
@@ -14,6 +14,7 @@ if(isset($_GET["token"])){
 			if($conn->query($query)){
 				$cookieTime = time() + (86400 * 30);	//30 day, 86400=1
 				setcookie("userID", $userID, $cookieTime, "/");
+				setcookie("userToken", $_GET["token"], $cookieTime, "/");
 				header("location:./");
 			}
 			else {
@@ -221,14 +222,14 @@ if(isset($_GET["token"])){
 											<li class="signin"><a href="?page=signin.php">Нэвтрэх</a></li>
 											<?php
 											}
-											//else {
+											else {
 											?>
 											<li class="testdrive"><a href="?page=testdrive.php">Шалгах</a></li>
 											<li class="instructions"><a href="?page=instructions.php">Заавар</a></li>
 											<li class="profile"><a href="?page=profile">Хэрэглэгч</a></li>
 											<li class="price"><a href="?page=price.php">Цэнэглэх</a></li>
 											<?php
-											//}
+											}
 											?>
 										</ul>
 									</nav>
