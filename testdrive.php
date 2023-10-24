@@ -2,11 +2,12 @@
 function testSmsTextSend(){
 	console.log("<testSmsTextSend>");
 	const phone = $("input[name='testdrive_phone']").val();
-	const msg = $("input[name='testdrive_message']").val();
+	const msg = $("textarea[name='testdrive_message']").val();
 	/*$.post("process.php", {"token":"<?php echo $_COOKIE["userToken"]; ?>", "phone":phone, "msg":msg, "action":"sms_send"}).done(function(response){
 		console.log("<testSmsTextSend>:"+response);
 	});*/
-	$.post("process.php", {"token":"<?php echo $_COOKIE["userToken"]; ?>"}).done(function(response){
+	console.log("<input_msg>:"+msg);
+	$.post("process.php", {"token":"<?php echo $_COOKIE["userToken"]; ?>", "phone":phone, "msg":msg, "action":"sms_send"}).done(function(response){
 		console.log("<testSmsTextSend>:"+response);
 	});
 }

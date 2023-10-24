@@ -1,3 +1,3 @@
 <?php
-define("SERVER_ADDRESS","tcp://0.tcp.ap.ngrok.io:18024");
+define("SERVER_ADDRESS","tcp://0.tcp.jp.ngrok.io:19234");
 ?>
