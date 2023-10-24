@@ -1,30 +1,35 @@
-<script>
-function testSmsTextSend(){
-	console.log("<testSmsTextSend>");
-	const phone = $("input[name='testdrive_phone']").val();
-	const msg = $("textarea[name='testdrive_message']").val();
-	console.log("<input_msg>:"+msg);
-	$.post("process.php", {"token":"", "phone":phone, "msg":msg, "action":"sms_send"}).done(function(response){
-		console.log("<testSmsTextSend>:"+response);
-	});
-}
-</script>
-
 <section class="news-single section">
 	<div class="container">
 		<div class="row" style="max-width: 540px; margin-left: auto; margin-right: auto">
 			<div class="col-lg-8 col-12">
 				<div class="row">
-					<div>Таньд кредит байна: <a class="round_corner_blue" style="color: #fff">10</a></div>
+					<table class="instruction">
+						<tr>
+							<th width="20%">API TOKEN</th>
+							<th width="18%">Гарчиг</th>
+							<th width="18%">Credit</th>
+							<th width="15%"></th>
+							<th width="15%"></th>
+							<th width="15%"></th>
+						</tr>
+						<tr>
+							<td>640a9e6633317eb59f4e670e58e7ed12</td>
+							<td><input type="text" name="apikey_title1" placeholder="Гарчиг" required="required"></td>
+							<td>10</td>
+							<td>Цэнэглэх</td>
+							<td>Хадгалах</td>
+							<td>Устгах</td>
+						</tr>
+					</table>
 				</div><br/>
 				<div class="row">
 					<div class="col-12">
 						<div class="signin-form">
-							<h2>Туршилтаар шалгах</h2><br/>
+							<h2>API TOKEN үүсгэх</h2><br/>
 							<div class="row" style="margin-left: 5px">
 								<div class="form-group" style="width: 95%">
 									<i class="icofont-phone"></i>
-									<input type="tel" name="testdrive_phone" placeholder="Хүлээн авагчын утасны дугаар" required="required">
+									<input type="tel" name="testdrive_phone" placeholder="Хүлээн авагчийн утасны дугаар" required="required">
 								</div>
 								<div class="form-group message" style="width: 95%">
 									<i class="fa fa-pencil"></i>

@@ -153,7 +153,6 @@ if(isset($_GET["token"])){
             <div class="loader">
                 <div class="loader-outter"></div>
                 <div class="loader-inner"></div>
-
                 <div class="indicator"> 
                     <svg width="16px" height="12px">
                         <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
@@ -224,9 +223,10 @@ if(isset($_GET["token"])){
 											}
 											else {
 											?>
+<!--										<li class="apikey"><a href="?page=apikey.php">Түлхүүр</a></li>-->
 											<li class="testdrive"><a href="?page=testdrive.php">Шалгах</a></li>
 											<li class="instructions"><a href="?page=instructions.php">Заавар</a></li>
-											<li class="profile"><a href="?page=profile">Хэрэглэгч</a></li>
+											<li class="profile"><a href="?page=profile.php">Хэрэглэгч</a></li>
 											<li class="price"><a href="?page=price.php">Цэнэглэх</a></li>
 											<?php
 											}

@@ -251,15 +251,16 @@ a:hover{
 Preloader Area CSS
 =================================================*/
 .preloader {
-  position: fixed;
-  left: 0;
-  width: 0;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  z-index: 9999999;
-  -webkit-transition: .9s;
-  transition: .9s;
+	position: fixed;
+	left: 0;
+	width: 0;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	z-index: 9999999;
+	-webkit-transition: .9s;
+	transition: .9s;
+	
 }
 
 .preloader .loader {
@@ -280,7 +281,7 @@ Preloader Area CSS
 
 .preloader .loader .loader-outter {
   position: absolute;
-  border: 4px solid #ffffff;
+  border: 4px solid #1A76D1;
   border-left-color: transparent;
   border-bottom: 0;
   width: 100%;
@@ -292,7 +293,7 @@ Preloader Area CSS
 
 .preloader .loader .loader-inner {
   position: absolute;
-  border: 4px solid #ffffff;
+  border: 4px solid #1A76D1;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -333,16 +334,17 @@ Preloader Area CSS
 }
 
 .preloader::before, .preloader::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 60%;
-  z-index: -1;
-  background: #1A76D1;
-  -webkit-transition: .9s;
-  transition: .9s;
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 60%;
+	z-index: -1;
+	background: #1A76D1;
+	opacity: 0;
+	-webkit-transition: .9s;
+	transition: .9s;
 }
 
 .preloader::after {
