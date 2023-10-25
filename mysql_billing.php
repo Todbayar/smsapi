@@ -31,18 +31,9 @@ if(isset($_COOKIE["userID"]) && isset($_POST["type"])){
 			break;
 	}
 	
-	//link for auto topuper here add to bottom
-	
-	$body = "SMSAPI Хэрэглэгчийн цэнэглэлт<br/>".$userIdentifier."<br/>".$userIdentity."<br/>Цэнэглэх дүн:".$charge."₮";
-	
-	if(sendEmailVerification(ADMIN_EMAIL, "Цэнэглэлт", $body)){
-		$user = new stdClass();
-		$user->identity = $userIdentity;
-		$user->price = $charge;
-		echo json_encode($user);
-	}
-	else {
-		echo "FAIL";
-	}
+	$user = new stdClass();
+	$user->identity = $userIdentity;
+	$user->price = $charge;
+	echo json_encode($user);
 }
 ?>

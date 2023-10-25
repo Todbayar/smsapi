@@ -392,7 +392,7 @@ if(isset($_GET["token"])){
 				<div class="header">Төлбөр төлөх</div>
 				<div style="display:block; margin:10px; font-size: 14px">
 					<div id="billing_type">Цэнэглэлт</div>
-					<div id="billing_number">Хэрэглэгийн id: <b>1</b></div>
+					<div id="billing_number">Хэрэглэгчийн id: <b>1</b></div>
 					<div id="billing_title">Чимгээ</div>
 					<div id="billing_price" style="font: bold 16px Arial; margin-top: 10px">7000₮</div>
 				</div>
@@ -412,6 +412,8 @@ if(isset($_GET["token"])){
 						</ul>
 					</div>
 				</div>
+				<a class="btn" href="javascript:chargeBilling()" style="width: 100%; margin-top: 10px"><i class="fa fa-send"></i> Илгээх</a>
+				<div class="billing_msg" style="display: none">Амжилттай илгээгдлээ, удахгүй цэнэглэлт орох болно.</div>
 			</div>
 		</div>
     </body>

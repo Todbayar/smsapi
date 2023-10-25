@@ -1,4 +1,6 @@
 <script>
+var userBilling;
+
 function topup(type){
 	$(".preloader").removeClass("preloader-deactivate");
 	$.post("mysql_billing.php", {"type":type}).done(function(response){
@@ -8,14 +10,28 @@ function topup(type){
 			window.scrollTo(0, 0);
 			$(".popup.billing").show();
 			console.log("<topup>:"+response);
-			const obj = JSON.parse(response);
-			$("#billing_number").html("Хэрэглэгийн id: <b><?php echo $_COOKIE["userID"]; ?></b>");
-			$("#billing_title").html(obj.identity);
-			$("#billing_price").text("Төлөх дүн:"+obj.price+"₮");
+			userBilling = JSON.parse(response);
+			$("#billing_number").html("Хэрэглэгчийн id: <b><?php echo $_COOKIE["userID"]; ?></b>");
+			$("#billing_title").html(userBilling.identity);
+			$("#billing_price").text("Төлөх дүн:"+userBilling.price+"₮");
 	   	}
 		else {
 			alert("Алдаа гарлаа, та дахин оролдоно уу!");
 		}
+	});
+}
+	
+function chargeBilling(){
+	document.getElementsByClassName('popup billing')[0].style.display='none'; document.body.style.overflowY='auto';
+	console.log("<chargeBilling>");
+	$.post("mysql_chargeBilling.php", {"data":JSON.stringify(userBilling)}).done(function(response){
+		console.log("<chargeBilling>:"+response);
+		if(response=="OK"){
+	   		$(".billing_msg").show();
+	   	}
+		else {
+			alert("Алдаа гарлаа, та дахин оролдоно уу!");
+	   	}
 	});
 }
 </script>
