@@ -31,10 +31,14 @@ $row = mysqli_fetch_array($result);
 				<div class="row">
 					<div class="col-12">
 						<div class="signin-form">
-							<h2>Хувын мэдээлэл</h2><br/>
+							<h2>Хэрэглэгчийн мэдээлэл</h2><br/>
 							<div class="row" style="margin-left: 5px">
 								<div class="form-group" style="width: 95%">
 									Хэрэглэгчийн id: <?php echo $row["id"]; ?>
+								</div>
+								<div class="form-group" style="width: 95%">
+									<i class="fa fa-envelope"></i>
+									<input type="tel" name="profile_email" placeholder="Имейл" required="required" value="<?php echo $row["email"]; ?>" readonly>
 								</div>
 								<div class="form-group" style="width: 95%">
 									<i class="icofont-phone"></i>

@@ -16,10 +16,14 @@ function signup(){
 	const patternEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 	
 	if(pass1==pass2 && patternEmail.test(email)){
-		$(this).text("Түр хүлээнэ үү...")
+		$(".preloader").removeClass("preloader-deactivate");
 	   	$.post("mysql_signup.php", {"email":email, "pass":pass1}).done(function(response){
+			$(".preloader").addClass("preloader-deactivate");
 			console.log("<signup>:"+response);
-			if(response!="FAIL"){
+			if(response=="<OK>:1"){
+				$(".signup_msg").html("<h6>Та аль хэдийн бүртгэлтэй байна. Буцах дээр дарна уу.</h6>");
+		   	}
+			else if(response!="FAIL"){
 				console.log("<res>:"+response);
 				if(response==1){
 					$(".sign-msg").show();
@@ -107,6 +111,7 @@ function signin(){
 									<button type="submit" class="btn primary" onClick="signup()">Бүртгүүлэх</button>
 									<a href="javascript:showSignin()" style="float: right">Буцах</a>
 								</div>
+								<div class="signup_msg" style="margin-top: 10px"></div>
 							</div>
 						</div>
 						<div class="sign-msg" style="display: none">

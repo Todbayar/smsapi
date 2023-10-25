@@ -15,7 +15,7 @@ if(isset($_GET["token"])){
 				$cookieTime = time() + (86400 * 30);	//30 day, 86400=1
 				setcookie("userID", $userID, $cookieTime, "/");
 				setcookie("userToken", $_GET["token"], $cookieTime, "/");
-				header("location:./");
+				header("location:./?page=profile.php");
 			}
 			else {
 				?>
@@ -122,6 +122,94 @@ if(isset($_GET["token"])){
 		<!-- Main JS -->
 		<script src="js/main.js"></script>
 		
+		<style>
+		.popup {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			/*	background-color: black;*/
+			/*	opacity: 0.73;*/
+			top: 0;
+			left: 0;
+			background: url(img/background.png) repeat;
+			z-index: 10000;
+		}
+		
+		.popup .container {
+			background:#E8E8E8;
+			position:absolute;
+			border-radius: 10px;
+			padding-bottom: 10px;
+			top: 10vh;
+		/*	box-shadow: 5px 5px 5px lightblue;*/
+			left: 0px;
+			right: 0px;
+			margin-left: auto;
+			margin-right: auto;
+			opacity: 1.0;
+			width: 240px;
+		}
+			
+		.popup .container .header {
+			background: transparent;
+			height: 20px;
+			text-align: center;
+			padding: 5px;
+			width: 100%;
+		}
+
+		.popup .container .message {
+			padding: 5px;
+			height: 50px;
+			width: 230px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		/*	white-space: nowrap;*/
+			text-align: center;
+			vertical-align: middle; 
+			display: table-cell;
+		}
+			
+		.popup .container .action {
+			margin-top: 5px;
+			display: flex;
+		}
+
+		.popup .container .action button {
+			margin-left: auto; 
+			margin-right: auto;
+		}
+
+		.popup .container .action button i {
+			margin-right: 5px;
+		}
+
+		.popup .container .close {
+			position: absolute; 
+			font-size: 20px; 
+		/*	color: #FF4649; */
+			color: #256d00;
+			right: 5px; 
+			top: 5px;
+			z-index: 10001;
+			cursor: pointer;
+		/*	box-shadow: 2px 2px 5px lightblue;*/
+		}
+
+		.popup .container .error {
+			font: normal 12px Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+			color: #FF4649;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.popup .container .msg {
+			font: normal 12px Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		</style>
+		
 		<script>
 		var prevPage = "index.php";
 		$(document).ready(function(){
@@ -143,6 +231,13 @@ if(isset($_GET["token"])){
 			
 		function failVerifyingEmail(errorID){
 			alert("Таны имэйлийг баталгаажуулахад алдаа гарлаа! ("+errorID+")");
+		}
+			
+		function copyToClipboardBankAccountNumber(){
+			$(".popup.billing #copyToClipboard").css("color","#FFA718");
+			var copyText = document.getElementById("account");
+			console.log("<copyToClipboardBankAccountNumber>:"+copyText.text);
+			navigator.clipboard.writeText(copyText.text);
 		}
 		</script>
 		
@@ -290,5 +385,34 @@ if(isset($_GET["token"])){
 			<!--/ End Copyright -->
 		</footer>
 		<!--/ End Footer Area -->
+		
+		<div class="popup billing" style="display: none">
+			<div class="container" style="width: 320px; top: 5vh">
+				<i class="icofont-close-circled close" onClick="javascript:document.getElementsByClassName('popup billing')[0].style.display='none'; javascript:document.body.style.overflowY='auto'"></i>
+				<div class="header">Төлбөр төлөх</div>
+				<div style="display:block; margin:10px; font-size: 14px">
+					<div id="billing_type">Цэнэглэлт</div>
+					<div id="billing_number">Хэрэглэгийн id: <b>1</b></div>
+					<div id="billing_title">Чимгээ</div>
+					<div id="billing_price" style="font: bold 16px Arial; margin-top: 10px">7000₮</div>
+				</div>
+				<div>
+					<div id="billing_bank" style="font-size: 14px; margin-left: 10px">
+						<div style="margin-bottom: 5px">Дараах данс руу илгээнэ үү.</div>
+						<div style="margin-bottom: 5px"><a id="name" style="font-size: 16px"><b>Хаан Банк</b></a>-ны данс:</div>
+						<div style="margin-bottom: 5px">
+							<a id="account" style="font-size: 16px"><b>5020922323</b></a>
+							<i id="copyToClipboard" onclick="copyToClipboardBankAccountNumber()" class="icofont-copy-invert" style="margin-left: 5px; font-size: 16px; cursor: pointer"></i>
+						</div>
+						<div>Хүлээн авагч: <a id="owner" style="font-size: 16px"><b>Тодбаяр Алтанхуяг</b></a></div>
+					</div>
+					<div style="font-size: 14px; margin-top: 10px; margin-left: 10px">
+						<ul>
+							<li><a style="text-decoration: underline">Гүйлгээний утга</a> дээр заавал: <b style="color: red">УТАСНЫ ДУГААР</b> оруулна уу.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
     </body>
 </html>
