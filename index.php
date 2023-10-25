@@ -2,19 +2,17 @@
 include "mysql_config.php";
 include_once "language/mon.php";
 
-if(isset($_GET["token"])){
-	$query = "SELECT * FROM validater WHERE token='".$_GET["token"]."' LIMIT 1";
+if(isset($_GET["emailverifier"])){
+	$query = "SELECT * FROM validater WHERE value='".$_GET["emailverifier"]."' AND type=0 LIMIT 1";
 	$result = $conn->query($query);
 	if(mysqli_num_rows($result) > 0){
-		$row = mysqli_fetch_array($result);
-		$userID = $row["user"];
+		$userID = intval($_GET["emailverifier"]);
 		$query = "UPDATE user SET isactive=1 WHERE id=".$userID;
 		if($conn->query($query)){
-			$query = "DELETE FROM validater WHERE user=".$userID." AND type=0";
+			$query = "DELETE FROM validater WHERE value='".$userID."' AND type=0";
 			if($conn->query($query)){
 				$cookieTime = time() + (86400 * 30);	//30 day, 86400=1
 				setcookie("userID", $userID, $cookieTime, "/");
-				setcookie("userToken", $_GET["token"], $cookieTime, "/");
 				header("location:./?page=profile.php");
 			}
 			else {

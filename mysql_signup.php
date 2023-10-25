@@ -22,7 +22,7 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
 				if($result = $conn->query($query)){
 					$domain = $_SERVER['SERVER_NAME']!="localhost"?$_SERVER['SERVER_NAME']:$_SERVER['SERVER_NAME']."/smsapi";
 
-					$link = $protocol."://".$domain."/?id=".$userID;
+					$link = $protocol."://".$domain."/?emailverifier=".$userID;
 
 					$body = "Сайн байна уу? Энэ өдрийн мэндийг хүргье.<br/>Та энд <a href=\"".$link."\">Баталгаажуулах</a> дээр дарж SMSAPI.MN-рүү нэвтрэх имейлээ баталгаажуулна уу";
 					echo sendEmailVerification($_POST["email"], "Баталгаажуулалт", $body);
