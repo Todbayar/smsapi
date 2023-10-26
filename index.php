@@ -410,7 +410,7 @@ if(isset($_GET["emailverifier"])){
 						</ul>
 					</div>
 				</div>
-				<a class="btn" href="javascript:chargeBilling()" style="width: 100%; margin-top: 10px"><i class="fa fa-send"></i> Илгээх</a>
+				<a class="btn billing_submit" href="" style="width: 100%; margin-top: 10px"><i class="fa fa-send"></i> Илгээх</a>
 				<div class="billing_msg" style="display: none">Амжилттай илгээгдлээ, удахгүй цэнэглэлт орох болно.</div>
 			</div>
 		</div>
