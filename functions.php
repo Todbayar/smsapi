@@ -11,19 +11,28 @@ require_once "./PHPMailer/src/SMTP.php";
 
 function send_sms($phone, $msg, $address){
 	//sending to remote python script with ngrok
-	$fp = stream_socket_client($address, $errno, $errstr, 30);
-	if (!$fp) {
-		echo "$errstr ($errno)";
-	} else {
-		$json = json_encode(array("action"=>"sms", "phone"=>$phone, "msg"=>$msg));
-		fwrite($fp, $json);
-		fwrite($fp, "close");
-		while (!feof($fp)) {
-			if(fgets($fp, 1024)=="accepted"){
-				return true;
+	try {
+		$fp = stream_socket_client($address, $errno, $errstr, 30);
+		if (!$fp) {
+			echo "$errstr ($errno)";
+		} else {
+			$json = json_encode(array("action"=>"sms", "phone"=>$phone, "msg"=>$msg));
+			fwrite($fp, $json);
+			fwrite($fp, "close");
+			while (!feof($fp)) {
+				$result = fgets($fp, 1024);
+				if($result=="success"){
+					return true;
+				}
+				else {
+					return false;
+				}
 			}
+			fclose($fp);
 		}
-		fclose($fp);
+	}
+	catch(Exception $err){
+		echo "no_socket_connection";
 	}
 }
 

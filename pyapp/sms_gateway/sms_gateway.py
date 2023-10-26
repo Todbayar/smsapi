@@ -36,27 +36,33 @@ def SendShortMessage(phone_number,text_message):
 		answer = send_at('','OK',5)
 		if 1 == answer:
 			print('send successfully')
+			return 1
 		else:
 			print('error')
+			return 0
 	else:
 		print('error%d'%answer)
+		return 0
 
 def on_new_client(c_socket, c_addr):
 	while True:
 		request = c_socket.recv(1024)
 		request = request.decode("utf-8") # convert bytes to string
+
 		if request.lower() == "close":
 			c_socket.send("closed".encode("utf-8"))
 			break
 		
+		#AT command
+		print(f"Received: {request}")
 		reqObj = json.loads(request)
 		if reqObj["action"] == "sms":
-			SendShortMessage(reqObj["phone"],reqObj["msg"])
-
-		print(f"Received: {request}")	#here must be AT command
-
-		response = "accepted".encode("utf-8")
-		c_socket.send(response)
+			if SendShortMessage(reqObj["phone"],reqObj["msg"]) == 1:
+				response = "success".encode("utf-8")
+				c_socket.send(response)
+			else:
+				response = "fail".encode("utf-8")
+				c_socket.send(response)
 
 	c_socket.close()
 	print(f"Connection to client closed:{c_addr[0]}:{c_addr[1]}")

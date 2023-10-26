@@ -22,7 +22,7 @@ if(isset($_POST["token"]) && isset($_POST["phone"]) && isset($_POST["msg"]) && i
 						}
 					}
 					break;
-			}	
+			}
 		}
 		else {
 			echo "FAIL 2";
