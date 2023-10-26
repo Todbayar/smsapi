@@ -35,7 +35,7 @@ def SendShortMessage(phone_number,text_message):
 		ser.write(b'\x1A')
 		answer = send_at('','OK',5)
 		if 1 == answer:
-			print('send successfully')
+			print('send msg successfully')
 			return 1
 		else:
 			print('error')
@@ -57,7 +57,8 @@ def on_new_client(c_socket, c_addr):
 		print(f"Received: {request}")
 		reqObj = json.loads(request)
 		if reqObj["action"] == "sms":
-			if SendShortMessage(reqObj["phone"],reqObj["msg"]) == 1:
+			result = SendShortMessage(reqObj["phone"],reqObj["msg"])
+			if result == 1:
 				response = "success".encode("utf-8")
 				c_socket.send(response)
 			else:

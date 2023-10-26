@@ -17,7 +17,8 @@ function testSmsTextSend(token){
 		
 		console.log("<testSmsTextSend_res>:"+response);
 		
-		if(response=="OK"){
+		if(response=="successclosedOK"){
+			$(".testdrive_credit").text(parseInt($(".testdrive_credit").text())-1);
 			$(".testdrive_msg").show();
 	   	}
 		else {
@@ -38,7 +39,7 @@ $row = mysqli_fetch_array($result);
 		<div class="row" style="max-width: 540px; margin-left: auto; margin-right: auto">
 			<div class="col-lg-8 col-12">
 				<div class="row">
-					<div>Таньд кредит байна: <a class="round_corner_blue" style="color: #fff"><?php echo $row["credit"]; ?></a></div>
+					<div>Таньд кредит байна: <a class="round_corner_blue testdrive_credit" style="color: #fff"><?php echo $row["credit"]; ?></a></div>
 				</div><br/>
 				<div class="row">
 					<div class="col-12">

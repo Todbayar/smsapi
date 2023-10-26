@@ -21,7 +21,8 @@ function send_sms($phone, $msg, $address){
 			fwrite($fp, "close");
 			while (!feof($fp)) {
 				$result = fgets($fp, 1024);
-				if($result=="success"){
+				echo $result;
+				if($result=="successclosed"){
 					return true;
 				}
 				else {
