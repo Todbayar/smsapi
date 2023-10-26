@@ -1,5 +1,12 @@
 <?php
+include "mysql_config.php";
 include_once "variables.php";
+
+if(isset($_COOKIE["userID"])){
+	$query = "SELECT * FROM user LEFT JOIN apikey ON user.id=apikey.userID WHERE user.id=".$_COOKIE["userID"];
+	$result = $conn->query($query);
+	$row = mysqli_fetch_array($result);
+}
 ?>
 <section class="services home" style="padding-top:20px; padding-bottom:20px">
 	<div class="container">
@@ -16,7 +23,16 @@ include_once "variables.php";
 			<!-- Start Single Service -->
 			<div class="single-service" style="padding-left:15px; padding-right:15px">
 				<h4>SMS текст илгээх</h4>
-				<p>Доорх өгөгдлийг <a style="color:#e83e8c"><?php echo $protocol; ?>://<?php echo $domain!="localhost"?$domain:$domain."/sms_gateway"; ?>/process.php</a>-руу <a style="color:#1A76D1; font-weight: bold">post</a> хүсэлт илгээх.</p><br/>
+				<p>Доорх өгөгдлийг 
+					<a style="color:#e83e8c">
+					<?php
+					$domain = $_SERVER['SERVER_NAME']!="localhost"?$_SERVER['SERVER_NAME']:$_SERVER['SERVER_NAME']."/smsapi";
+					echo $address = $protocol."://".$domain."/process.php";
+					?>
+					</a>
+					-руу 
+					<a style="color:#1A76D1; font-weight: bold">post</a> хүсэлт илгээх.
+				</p><br/>
 				<h5>form datas</h5><br/>
 				<table class="instruction">
 					<tr>
@@ -26,7 +42,18 @@ include_once "variables.php";
 					</tr>
 					<tr>
 						<td>token</td>
-						<td>640a9e663331********************</td>
+						<td>
+							<?php
+							if(isset($_COOKIE["userID"])){
+								echo $row["token"];
+							}
+							else {
+								?>
+								640a9e663331********************
+								<?php
+							}
+							?>
+						</td>
 						<td>API Key бүртгүүлхэд үүснэ</td>
 					</tr>
 					<tr>

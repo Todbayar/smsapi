@@ -33,25 +33,28 @@ $row = mysqli_fetch_array($result);
 						<div class="signin-form">
 							<h2>Хэрэглэгчийн мэдээлэл</h2><br/>
 							<div class="row" style="margin-left: 5px">
-								<div class="form-group" style="width: 95%">
+								<div class="form-group" style="width: 100%">
 									Хэрэглэгчийн id: <?php echo $row["id"]; ?>
 								</div>
-								<div class="form-group" style="width: 95%">
+								<div class="form-group" style="width: 100%">
+									API token: <b><?php echo $row["token"]; ?></b>
+								</div>
+								<div class="form-group" style="width: 100%">
 									Таньд кредит байна: <a href="./?page=price.php" class="round_corner_blue" style="color: #fff"><?php echo $row["credit"]; ?></a>
 								</div>
-								<div class="form-group" style="width: 95%">
+								<div class="form-group" style="width: 100%">
 									<i class="fa fa-envelope"></i>
 									<input type="tel" name="profile_email" placeholder="Имейл" required="required" value="<?php echo $row["email"]; ?>" readonly>
 								</div>
-								<div class="form-group" style="width: 95%">
+								<div class="form-group" style="width: 100%">
 									<i class="icofont-phone"></i>
 									<input type="tel" name="profile_phone" placeholder="Утасны дугаар" required="required" value="<?php echo $row["phone"]; ?>">
 								</div>
-								<div class="form-group" style="width: 95%">
+								<div class="form-group" style="width: 100%">
 									<i class="icofont-user"></i>
 									<input type="tel" name="profile_name" placeholder="Хэрэглэгчийн нэр" required="required" value="<?php echo $row["name"]; ?>">
 								</div>
-								<div class="form-group button" style="width: 95%">	
+								<div class="form-group button" style="width: 100%">	
 									<button type="submit" class="btn primary" onClick="profileSave()">
 										<i class="icofont-save"></i>Хадгалах
 									</button>

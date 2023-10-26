@@ -19,7 +19,9 @@ function send_sms($phone, $msg, $address){
 		fwrite($fp, $json);
 		fwrite($fp, "close");
 		while (!feof($fp)) {
-			echo fgets($fp, 1024);
+			if(fgets($fp, 1024)=="accepted"){
+				return true;
+			}
 		}
 		fclose($fp);
 	}

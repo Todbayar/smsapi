@@ -1,8 +1,10 @@
 <script>
 function topup(type){
 	$(".preloader").removeClass("preloader-deactivate");
+	
 	$.post("mysql_billing.php", {"type":type}).done(function(response){
 		$(".preloader").addClass("preloader-deactivate");
+		
 		if(response!="FAIL"){
 			$("body").css("overflow-y", "hidden");
 			window.scrollTo(0, 0);
