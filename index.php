@@ -329,6 +329,20 @@ if(isset($_GET["emailverifier"])){
 								</div>
 								<!--/ End Main Menu -->
 							</div>
+							<?php
+							if(isset($_COOKIE["userID"])){
+								$query = "SELECT credit FROM apikey WHERE userID=".$_COOKIE["userID"];
+								$result = $conn->query($query);
+								$row = mysqli_fetch_array($result);
+								?>
+								<div class="col-lg-2 col-12">
+									<div class="get-quote">
+										<a href="./?page=profile.php" class="btn">Кредит: <?php echo $row["credit"]; ?></a>
+									</div>
+								</div>
+								<?php
+							}
+							?>
 						</div>
 					</div>
 				</div>

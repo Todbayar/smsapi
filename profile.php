@@ -20,7 +20,7 @@ function profileSave(){
 </script>
 
 <?php
-$query = "SELECT * FROM user WHERE id=".$_COOKIE["userID"];
+$query = "SELECT * FROM user LEFT JOIN apikey ON user.id=apikey.userID WHERE user.id=".$_COOKIE["userID"];
 $result = $conn->query($query);
 $row = mysqli_fetch_array($result);
 ?>
@@ -35,6 +35,9 @@ $row = mysqli_fetch_array($result);
 							<div class="row" style="margin-left: 5px">
 								<div class="form-group" style="width: 95%">
 									Хэрэглэгчийн id: <?php echo $row["id"]; ?>
+								</div>
+								<div class="form-group" style="width: 95%">
+									Таньд кредит байна: <a href="./?page=price.php" class="round_corner_blue" style="color: #fff"><?php echo $row["credit"]; ?></a>
 								</div>
 								<div class="form-group" style="width: 95%">
 									<i class="fa fa-envelope"></i>
