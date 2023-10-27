@@ -12,7 +12,7 @@ if(isset($_POST["token"]) && isset($_POST["phone"]) && isset($_POST["msg"]) && i
 			
 			switch($_POST["action"]){
 				case "sms_text_send":
-					if(send_sms($_POST["phone"], $_POST["msg"], SERVER_ADDRESS)==true){
+					if(send_sms_local($_POST["phone"], $_POST["msg"], SERVER_ADDRESS)==true){
 						$query = "UPDATE apikey SET credit=credit-1 WHERE userID=".$row["userID"];
 						if($conn->query($query)){
 							echo "OK";
@@ -21,15 +21,18 @@ if(isset($_POST["token"]) && isset($_POST["phone"]) && isset($_POST["msg"]) && i
 							echo "FAIL 1";
 						}
 					}
+					else {
+						echo "FAIL 2";
+					}
 					break;
 			}
 		}
 		else {
-			echo "FAIL 2";
+			echo "FAIL 3";
 		}	
 	}
 	else {
-		echo "FAIL 3";
+		echo "FAIL 4";
 	}
 }
 ?>

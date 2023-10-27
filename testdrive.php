@@ -17,7 +17,7 @@ function testSmsTextSend(token){
 		
 		console.log("<testSmsTextSend_res>:"+response);
 		
-		if(response=="successclosedOK"){
+		if(response=="OK"){
 			$(".testdrive_credit").text(parseInt($(".testdrive_credit").text())-1);
 			$(".testdrive_msg").show();
 	   	}
@@ -26,6 +26,7 @@ function testSmsTextSend(token){
 		}
 	});
 }
+
 </script>
 
 <?php

@@ -18,7 +18,6 @@ function send_sms($phone, $msg, $address){
 		} else {
 			$json = json_encode(array("action"=>"sms", "phone"=>$phone, "msg"=>$msg));
 			fwrite($fp, $json);
-			fwrite($fp, "close");
 			while (!feof($fp)) {
 				$result = fgets($fp, 1024);
 				echo $result;
@@ -36,6 +35,23 @@ function send_sms($phone, $msg, $address){
 		echo "no_socket_connection";
 	}
 }
+
+function send_sms_local($phone, $msg){
+	global $conn;
+	
+	$objMsg = new stdClass();
+	$objMsg->phone = $phone;
+	$objMsg->msg = $msg;
+	
+	$query = "INSERT INTO validater(value, state, type) VALUES('".json_encode($objMsg)."', 0, 3)";
+	if($conn->query($query)){
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 
 function get_client_ip() {
     $ipaddress = '';
