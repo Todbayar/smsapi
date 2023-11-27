@@ -9,46 +9,20 @@ require_once "./PHPMailer/src/Exception.php";
 require_once "./PHPMailer/src/PHPMailer.php";
 require_once "./PHPMailer/src/SMTP.php";
 
-function send_sms($phone, $msg, $address){
-	//sending to remote python script with ngrok
-	try {
-		$fp = stream_socket_client($address, $errno, $errstr, 30);
-		if (!$fp) {
-			echo "$errstr ($errno)";
-		} else {
-			$json = json_encode(array("action"=>"sms", "phone"=>$phone, "msg"=>$msg));
-			fwrite($fp, $json);
-			while (!feof($fp)) {
-				$result = fgets($fp, 1024);
-				echo $result;
-				if($result=="successclosed"){
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-			fclose($fp);
-		}
-	}
-	catch(Exception $err){
-		echo "no_socket_connection";
-	}
-}
-
-function send_sms_local($phone, $msg){
+function send_sms($phone, $msg){
 	global $conn;
 	
-	$objMsg = new stdClass();
-	$objMsg->phone = $phone;
-	$objMsg->msg = $msg;
-	
-	$query = "INSERT INTO validater(value, state, type) VALUES('".json_encode($objMsg)."', 0, 3)";
+	$query = "INSERT INTO action (type, phone, msg, datetime) VALUES (0, '".$phone."', '".$msg."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'))";
 	if($conn->query($query)){
-		return true;
+		echo "OK";
 	}
 	else {
-		return false;
+		if(mysqli_errno($conn)==1062){
+			echo "FAIL_DUPLICATE";
+		}
+		else {
+			echo "FAIL";
+		}
 	}
 }
 

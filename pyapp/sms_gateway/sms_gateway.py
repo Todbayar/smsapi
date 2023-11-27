@@ -1,12 +1,11 @@
 #!/usr/bin/python
-
-import serial
+import serial	#pip install pyserial
 import time
-import socket
 from threading import Thread
 import json
+import mysql.connector
 
-ser = serial.Serial("COM8",115200)
+ser = serial.Serial("COM7",115200)
 ser.flushInput()
 rec_buff = ''
 
@@ -44,33 +43,24 @@ def SendShortMessage(phone_number,text_message):
 		print('error%d'%answer)
 		return 0
 
-def on_new_client(c_socket, c_addr):
-	while True:
-		request = c_socket.recv(1024)
-		request = request.decode("utf-8") # convert bytes to string
-
-		if request.lower() == "close":
-			c_socket.send("closed".encode("utf-8"))
-			break
-		
-		#AT command
-		print(f"Received: {request}")
-		reqObj = json.loads(request)
-		if reqObj["action"] == "sms":
-			result = SendShortMessage(reqObj["phone"],reqObj["msg"])
-			if result == 1:
-				response = "success".encode("utf-8")
-				c_socket.send(response)
-			else:
-				response = "fail".encode("utf-8")
-				c_socket.send(response)
-
-	c_socket.close()
-	print(f"Connection to client closed:{c_addr[0]}:{c_addr[1]}")
-
 def run_client():
-	
-	server.close()
-	ser.close()
+	mydb = mysql.connector.connect(
+		host="202.131.4.21",
+		user="zarchimn_99213557",
+		password="m?OzHo6&&~w$"
+	)
+
+	mycursor = mydb.cursor()
+
+	mycursor.execute("SELECT * FROM action")
+
+	myresult = mycursor.fetchall()
+
+	for x in myresult:
+		print(x)
+
+	#send_at("AT","OK",1)
+	#SendShortMessage("99213557","ene bol test msg...")
+	#ser.close()
 
 run_client()
