@@ -1,13 +1,22 @@
 #!/usr/bin/python
 import serial	#pip install pyserial
+import threading as th  
+from threading import Timer  
 import time
-from threading import Thread
-import json
 import mysql.connector
+
 
 ser = serial.Serial("COM9",115200)
 ser.flushInput()
 rec_buff = ''
+isConfig = False
+
+mydb = mysql.connector.connect(
+		host="202.131.4.21",
+		user="zarchimn_99213557",
+		password="m?OzHo6&&~w$",
+		database="zarchimn_smsapi"
+	)
 
 def send_at(command,back,timeout):
 	rec_buff = ''
@@ -43,25 +52,24 @@ def SendShortMessage(phone_number,text_message):
 		print('error%d'%answer)
 		return 0
 
+def run_sender():
+	while True:
+		print('Sending:' + time.strftime('%H:%M:%S'))
+		mycursor = mydb.cursor()
+		mycursor.execute("SELECT * FROM action WHERE state=0")
+		myresult = mycursor.fetchall()
+
+		for x in myresult:
+			print(x[3])
+
+		time.sleep(15)
+
+		# send_at("AT","OK",1)
+		#SendShortMessage("99213557","ene bol test msg...")
+		# ser.close()
+
 def run_client():
-	mydb = mysql.connector.connect(
-		host="202.131.4.21",
-		user="zarchimn_99213557",
-		password="m?OzHo6&&~w$",
-		database="zarchimn_smsapi"
-	)
-
-	mycursor = mydb.cursor()
-
-	mycursor.execute("SELECT * FROM action WHERE state=0")
-
-	myresult = mycursor.fetchall()
-
-	for x in myresult:
-		print(x[3])
-
-	# send_at("AT","OK",1)
-	#SendShortMessage("99213557","ene bol test msg...")
-	# ser.close()
+	t = th.Thread(target=run_sender)
+	t.start()
 
 run_client()
