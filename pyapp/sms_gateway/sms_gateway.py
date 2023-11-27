@@ -5,7 +5,7 @@ from threading import Thread
 import json
 import mysql.connector
 
-ser = serial.Serial("COM7",115200)
+ser = serial.Serial("COM9",115200)
 ser.flushInput()
 rec_buff = ''
 
@@ -47,20 +47,21 @@ def run_client():
 	mydb = mysql.connector.connect(
 		host="202.131.4.21",
 		user="zarchimn_99213557",
-		password="m?OzHo6&&~w$"
+		password="m?OzHo6&&~w$",
+		database="zarchimn_smsapi"
 	)
 
 	mycursor = mydb.cursor()
 
-	mycursor.execute("SELECT * FROM action")
+	mycursor.execute("SELECT * FROM action WHERE state=0")
 
 	myresult = mycursor.fetchall()
 
 	for x in myresult:
-		print(x)
+		print(x[3])
 
-	#send_at("AT","OK",1)
+	# send_at("AT","OK",1)
 	#SendShortMessage("99213557","ene bol test msg...")
-	#ser.close()
+	# ser.close()
 
 run_client()
