@@ -6,7 +6,7 @@ import time
 import mysql.connector
 
 
-ser = serial.Serial("COM9",115200)
+ser = serial.Serial("COM15",115200)
 ser.flushInput()
 rec_buff = ''
 isConfig = False
