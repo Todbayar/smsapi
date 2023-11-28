@@ -56,17 +56,25 @@ def run_sender():
 	while True:
 		print('Sending:' + time.strftime('%H:%M:%S'))
 		mycursor = mydb.cursor()
-		mycursor.execute("SELECT * FROM action WHERE state=0")
+		mycursor.execute("SELECT * FROM action AS a LEFT JOIN apikey AS k ON a.token=k.token WHERE a.state=0 AND k.credit>=1")
 		myresult = mycursor.fetchall()
 
 		for x in myresult:
-			print(x[3])
+			#print(x)
+			print(x[2])	#phone
+			print(x[3])	#msg
+			print(x[5])	#token
+			if SendShortMessage(x[2],x[3]) == 1:
+				mycursor.execute("UPDATE apikey SET credit=credit-1 WHERE token='"+x[5]+"'")
+				mydb.commit()
+				mycursor.execute("UPDATE action SET state=1 WHERE id="+str(x[0]))
+				mydb.commit()
+			else:
+				print("Sending SMS failed!")
 
 		time.sleep(15)
 
-		# send_at("AT","OK",1)
-		#SendShortMessage("99213557","ene bol test msg...")
-		# ser.close()
+	#ser.close()
 
 def run_client():
 	t = th.Thread(target=run_sender)

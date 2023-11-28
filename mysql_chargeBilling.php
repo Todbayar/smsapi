@@ -21,13 +21,13 @@ if(isset($_COOKIE["userID"]) && isset($_POST["type"])){
 	$charge = 0;
 	switch($_POST["type"]){
 		case 1:
-			$charge = 7000;
+			$charge = CREDIT_STARTER;
 			break;
 		case 2:
-			$charge = 10000;
+			$charge = CREDIT_MID;
 			break;
 		case 3:
-			$charge = 20000;
+			$charge = CREDIT_PRO;
 			break;
 	}
 	

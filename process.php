@@ -12,7 +12,7 @@ if(isset($_POST["token"]) && isset($_POST["phone"]) && isset($_POST["msg"]) && i
 			
 			switch($_POST["action"]){
 				case "sms_text_send":
-					echo send_sms($_POST["phone"], $_POST["msg"]);
+					echo send_sms($_POST["phone"], $_POST["msg"], $_POST["token"]);
 					break;
 			}
 		}

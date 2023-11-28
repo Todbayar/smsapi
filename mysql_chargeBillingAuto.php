@@ -9,13 +9,13 @@ if(isset($_GET["userID"]) && isset($_GET["type"])){
 	$creditAmount = 0;
 	switch($_GET["type"]){
 		case 1:
-			$creditAmount=CREDIT_STARTER/PRICE_PER_CREDIT;
+			$creditAmount=floor(CREDIT_STARTER/PRICE_PER_CREDIT);
 			break;
 		case 2:
-			$creditAmount=CREDIT_MID/PRICE_PER_CREDIT;
+			$creditAmount=floor(CREDIT_MID/PRICE_PER_CREDIT);
 			break;
 		case 3:
-			$creditAmount=CREDIT_PRO/PRICE_PER_CREDIT;
+			$creditAmount=floor(CREDIT_PRO/PRICE_PER_CREDIT);
 			break;
 	}
 	

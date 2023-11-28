@@ -1,3 +1,7 @@
+<?php
+include_once "constants.php";
+?>
+
 <script>
 function topup(type){
 	$(".preloader").removeClass("preloader-deactivate");
@@ -67,9 +71,9 @@ function chargeBilling(type){
 							<img src="img/logo_sms_small.png" />
 						</div>
 						<h4 class="title">Starter plan</h4>
-						<h4 class="title">140 кредит</h4>
+						<h4 class="title"><?php echo floor(CREDIT_STARTER/PRICE_PER_CREDIT); ?> кредит</h4>
 						<div class="price">
-							<p class="amount">7000₮<span></span></p>
+							<p class="amount"><?php echo CREDIT_STARTER; ?>₮<span>/<?php echo PRICE_PER_CREDIT; ?>₮</span></p>
 						</div>
 					</div>
 					<div class="table-bottom">
@@ -99,10 +103,10 @@ function chargeBilling(type){
 							<img src="img/logo_sms_small.png" />
 						</div>
 						<h4 class="title">Mid plan</h4>
-						<h4 class="title">200 кредит</h4>
+						<h4 class="title"><?php echo floor(CREDIT_MID/PRICE_PER_CREDIT); ?> кредит</h4>
 						<div class="price">
-							<p class="amount">10000₮<span></span></p>
-						</div>	
+							<p class="amount"><?php echo CREDIT_MID; ?>₮<span>/<?php echo PRICE_PER_CREDIT; ?>₮</span></p>
+						</div>
 					</div>
 					<div class="table-bottom">
 						<?php
@@ -131,9 +135,9 @@ function chargeBilling(type){
 							<img src="img/logo_sms_small.png" />
 						</div>
 						<h4 class="title">Pro plan</h4>
-						<h4 class="title">400 кредит</h4>
+						<h4 class="title"><?php echo floor(CREDIT_PRO/PRICE_PER_CREDIT); ?> кредит</h4>
 						<div class="price">
-							<p class="amount">20000₮<span></span></p>
+							<p class="amount"><?php echo CREDIT_PRO; ?>₮<span>/<?php echo PRICE_PER_CREDIT; ?>₮</span></p>
 						</div>	
 					</div>
 					<div class="table-bottom">
