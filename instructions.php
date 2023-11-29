@@ -42,8 +42,7 @@ if(isset($_COOKIE["userID"])){
 					</tr>
 					<tr>
 						<td>token</td>
-						<td>
-							<?php
+						<td><?php
 							if(isset($_COOKIE["userID"])){
 								echo $row["token"];
 							}
@@ -52,9 +51,8 @@ if(isset($_COOKIE["userID"])){
 								640a9e663331********************
 								<?php
 							}
-							?>
-						</td>
-						<td>API Key бүртгүүлхэд үүснэ</td>
+							?></td>
+						<td>API token бүртгүүлхэд үүснэ</td>
 					</tr>
 					<tr>
 						<td>action</td>

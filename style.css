@@ -240,7 +240,7 @@ body{
 	margin-right:0;
 }
 .header .top-contact li a{
-	font-size:14px;
+	font-size:12px;
 }
 .header .top-contact li a:hover{
 	color:#1A76D1;
@@ -4126,6 +4126,7 @@ body{
 
 table.instruction {
 	width: 100%;
+	table-layout: fixed;
 }
 
 table.instruction th {
@@ -4138,6 +4139,7 @@ table.instruction th, td{
 	padding-right: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	word-wrap: break-word;
 }
 
 .round_corner_blue {
