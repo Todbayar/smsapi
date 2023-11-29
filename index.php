@@ -324,6 +324,7 @@ if(isset($_GET["emailverifier"])){
 											<li class="instructions"><a href="?page=instructions.php">Заавар</a></li>
 											<li class="profile"><a href="?page=profile.php">Хэрэглэгч</a></li>
 											<li class="price"><a href="?page=price.php">Цэнэглэх</a></li>
+											<li class="list"><a href="?page=list.php">Хянах</a></li>
 											<?php
 											}
 											?>

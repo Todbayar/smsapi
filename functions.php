@@ -12,7 +12,7 @@ require_once "./PHPMailer/src/SMTP.php";
 function send_sms($phone, $msg, $token){
 	global $conn;
 	
-	$query = "INSERT INTO action (type, phone, msg, token, datetime) VALUES (0, '".$phone."', '".$msg."', '".$token."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'))";
+	$query = "INSERT INTO action (type, phone, msg, token, created) VALUES (0, '".$phone."', '".$msg."', '".$token."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'))";
 	if($conn->query($query)){
 		echo "OK";
 	}

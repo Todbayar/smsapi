@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 27, 2023 at 03:46 PM
+-- Generation Time: Nov 29, 2023 at 03:46 PM
 -- Server version: 8.0.35-cll-lve
 -- PHP Version: 8.1.16
 
@@ -32,16 +32,32 @@ CREATE TABLE `action` (
   `type` int UNSIGNED NOT NULL COMMENT 'sms_text_send-0',
   `phone` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'phone number',
   `msg` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `state` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '0-unsent, 1-sent',
-  `datetime` datetime NOT NULL
+  `state` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '0-unsent, 1-sent, 2-error',
+  `token` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `sent` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `action`
 --
 
-INSERT INTO `action` (`id`, `type`, `phone`, `msg`, `state`, `datetime`) VALUES
-(1, 0, '99213557', 'this is test msg 1', 0, '2023-11-27 15:39:10');
+INSERT INTO `action` (`id`, `type`, `phone`, `msg`, `state`, `token`, `created`, `sent`) VALUES
+(1, 0, '99213557', 'hello world test msg 1', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 14:50:22', '2023-11-29 15:18:25'),
+(2, 0, '99213557', 'hello world test msg 2', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:20:47', '2023-11-29 15:18:33'),
+(3, 0, '99213557', 'asd test ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:20:54', NULL),
+(4, 0, '99213557', 'лорыбөлрыбө ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:21:11', NULL),
+(5, 0, '99213557', 'йыбйы йбый ыб', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:21:26', NULL),
+(6, 0, '99213557', 'йыб йыб', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:22:41', NULL),
+(7, 0, '99213557', 'asd test 1', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:23:56', '2023-11-29 15:15:08'),
+(8, 0, '99213557', 'ыбө ыбө ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:24:00', NULL),
+(9, 0, '99213557', 'sadsdf sdf ыбөыбө ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:25:16', NULL),
+(10, 0, '99213557', 'asdasd', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:31:27', '2023-11-29 15:15:16'),
+(11, 0, '99213557', 'asdasd ыбөыбөыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:31:31', NULL),
+(12, 0, '99213557', 'ыбөыбөыбө ыбөыбөыб asdsdf', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:00', NULL),
+(13, 0, '99213557', 'ыбөыбөыбө ыбөыбөыб asdsdf 98798654654', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:09', NULL),
+(14, 0, '99213557', 'ыбөыбөыбө ыбөыбөыб 97654654', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:15', NULL),
+(15, 0, '99213557', 'asd ыбөыб өыб өыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,7 +78,7 @@ CREATE TABLE `apikey` (
 --
 
 INSERT INTO `apikey` (`id`, `userID`, `title`, `token`, `credit`) VALUES
-(1, 1, NULL, '009ea1dd7eb1139506a23d652dca72b5', 80);
+(1, 1, NULL, '7b3ce1fa8947b147c8ea188b99fa66e6', 2);
 
 -- --------------------------------------------------------
 
@@ -97,7 +113,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `phone`, `ip`, `lastlogged`, `signedup`, `isactive`) VALUES
-(1, 'atodko0513@gmail.com', 'asd', 'Тодбаяр', '99213557', '103.212.118.119', '2023-11-27 15:38:00', '2023-10-26 16:48:00', 1);
+(1, 'atodko0513@gmail.com', 'asd', NULL, NULL, '66.181.177.93', '2023-11-28 14:48:00', '2023-11-28 14:48:00', 1);
 
 -- --------------------------------------------------------
 
@@ -150,7 +166,7 @@ ALTER TABLE `validater`
 -- AUTO_INCREMENT for table `action`
 --
 ALTER TABLE `action`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `apikey`
@@ -168,7 +184,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `validater`
 --
 ALTER TABLE `validater`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

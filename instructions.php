@@ -52,7 +52,7 @@ if(isset($_COOKIE["userID"])){
 								<?php
 							}
 							?></td>
-						<td>API token бүртгүүлхэд үүснэ</td>
+						<td>API token бүртгүүлэхэд үүснэ</td>
 					</tr>
 					<tr>
 						<td>action</td>
