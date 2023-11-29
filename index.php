@@ -258,7 +258,10 @@ if(isset($_GET["emailverifier"])){
 		
 		<!-- Get Pro Button -->
 		<ul class="pro-features">
-			<a class="get-pro" href="#">FB</a>
+			<a class="get-pro" href="#"><img src="img/facebook3.png" style="width: 26px; height: 26px" /></a>
+			<div class="button">
+				<a href="https://www.facebook.com/smsapi.mn/" target="_blank" class="btn">facebook page</a>
+			</div>
 		</ul>
 	
 		<!-- Header Area -->
