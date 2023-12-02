@@ -11,7 +11,7 @@ if(isset($_POST["token"]) && isset($_POST["phone"]) && isset($_POST["msg"]) && i
 		$result = $conn->query($query);
 		if(mysqli_num_rows($result)>0){
 			$row = mysqli_fetch_array($result);
-			if($row["credit"]>0){			
+			if($row["credit"]>0){
 				switch($_POST["action"]){
 					case "sms_text_send":
 						echo send_sms($_POST["phone"], $_POST["msg"], $_POST["token"]);
@@ -19,15 +19,15 @@ if(isset($_POST["token"]) && isset($_POST["phone"]) && isset($_POST["msg"]) && i
 				}
 			}
 			else {
-				echo "FAIL 3";
+				echo "FAIL_CREDIT";
 			}	
 		}
 		else {
-			echo "FAIL 4";
+			echo "FAIL_TOKEN_OR_USER";
 		}
 	}
 	else {
-		echo "FAIL 5";
+		echo "FAIL_PHONE_OR_ASCII";
 	}
 }
 ?>

@@ -11,18 +11,24 @@ require_once "./PHPMailer/src/SMTP.php";
 
 function send_sms($phone, $msg, $token){
 	global $conn;
-	
-	$query = "INSERT INTO action (type, phone, msg, token, created) VALUES (0, '".$phone."', '".$msg."', '".$token."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'))";
-	if($conn->query($query)){
-		echo "OK";
-	}
-	else {
-		if(mysqli_errno($conn)==1062){
-			echo "FAIL_DUPLICATE";
+	$query = "SELECT * FROM action WHERE token='".$token."' AND phone='".$phone."' AND msg='".$msg."' AND state=0";
+	$result = $conn->query($query);
+	if(mysqli_num_rows($result)==0){
+		$query = "INSERT INTO action (type, phone, msg, token, created) VALUES (0, '".$phone."', '".$msg."', '".$token."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'))";
+		if($conn->query($query)){
+			echo "OK";
 		}
 		else {
-			echo "FAIL";
+			if(mysqli_errno($conn)==1062){
+				echo "FAIL_DUPLICATE";
+			}
+			else {
+				echo "FAIL_REGISTER";
+			}
 		}
+	}
+	else {
+		echo "FAIL_REGISTERED";
 	}
 }
 

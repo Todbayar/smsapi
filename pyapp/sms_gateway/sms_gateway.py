@@ -4,7 +4,7 @@ import threading as th
 from threading import Timer  
 import time
 import mysql.connector
-
+import sys
 
 ser = serial.Serial("COM15",115200)
 ser.flushInput()
