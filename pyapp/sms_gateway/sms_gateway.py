@@ -64,15 +64,21 @@ def run_sender():
 			print(x[5])	#token
 			print(x[2])	#phone
 			print(x[3])	#msg
+			msgState = "waiting"
 			if SendShortMessage(x[2],x[3]) == 1:
 				mycursor.execute("UPDATE apikey SET credit=credit-1 WHERE token='"+x[5]+"'")
 				mydb.commit()
 				mycursor.execute("UPDATE action SET state=1, sent=DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') WHERE id="+str(x[0]))
 				mydb.commit()
+				msgState = "sent"
 			else:
 				print("Sending SMS failed!")
 				mycursor.execute("UPDATE action SET state=2 WHERE id="+str(x[0]))
 				mydb.commit()
+				msgState = "error"
+			f = open("smsapi_report.txt", "a")
+			f.write(x[2]+", "+x[3]+", "+x[5]+", "+msgState+"\r\n")
+			f.close()
 			print("================================")
 
 		time.sleep(10)
