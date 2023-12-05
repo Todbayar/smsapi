@@ -11,24 +11,31 @@ require_once "./PHPMailer/src/SMTP.php";
 
 function send_sms($phone, $msg, $token){
 	global $conn;
-	$query = "SELECT * FROM action WHERE token='".$token."' AND phone='".$phone."' AND msg='".$msg."' AND state=0";
-	$result = $conn->query($query);
-	if(mysqli_num_rows($result)==0){
-		$query = "INSERT INTO action (type, phone, msg, token, created) VALUES (0, '".$phone."', '".$msg."', '".$token."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'))";
-		if($conn->query($query)){
-			echo "OK";
-		}
-		else {
-			if(mysqli_errno($conn)==1062){
-				echo "FAIL_DUPLICATE";
+	$patternText = "/[a-zA-Z0-9]/i";
+	$patternPhone = "/^\d+$/i";
+	if((isset($msg) && preg_match($patternText, $msg)>0) && (isset($phone) && preg_match($patternPhone, $phone)>0)){
+		$query = "SELECT * FROM action WHERE token='".$token."' AND phone='".$phone."' AND msg='".$msg."' AND state=0";
+		$result = $conn->query($query);
+		if(mysqli_num_rows($result)==0){
+			$query = "INSERT INTO action (type, phone, msg, token, created) VALUES (0, '".$phone."', '".$msg."', '".$token."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'))";
+			if($conn->query($query)){
+				echo "OK";
 			}
 			else {
-				echo "FAIL_REGISTER";
+				if(mysqli_errno($conn)==1062){
+					echo "FAIL_DUPLICATE";
+				}
+				else {
+					echo "FAIL_REGISTER";
+				}
 			}
+		}
+		else {
+			echo "FAIL_REGISTERED";
 		}
 	}
 	else {
-		echo "FAIL_REGISTERED";
+		echo "FAIL_PHONE_OR_ASCII";
 	}
 }
 
@@ -102,6 +109,9 @@ function sendEmailVerification($emailReceiver, $title, $body, $isDebug=null){
 		}
 	}
 	catch(Exception $e){
+		?>
+		<script>console.log("<?php echo "Message could not be sent. Mailer Error:{$mail->ErrorInfo}"; ?>");</script>
+		<?php
 		if($isDebug=="CONSOLE"){
 			?>
 			<script>console.log("<?php echo "Message could not be sent. Mailer Error:{$mail->ErrorInfo}"; ?>");</script>
@@ -114,5 +124,25 @@ function sendEmailVerification($emailReceiver, $title, $body, $isDebug=null){
 			return false;
 		}
 	}
+}
+
+function isUserValid($token){
+	global $conn;
+	$query = "SELECT * FROM apikey AS a LEFT JOIN user AS u ON a.userID=u.id WHERE a.token='".$token."' AND u.isactive=1";
+	$result = $conn->query($query);
+	if(mysqli_num_rows($result)>0){
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function getUserCredit($token){
+	global $conn;
+	$query = "SELECT * FROM apikey AS a LEFT JOIN user AS u ON a.userID=u.id WHERE a.token='".$token."' AND u.isactive=1";
+	$result = $conn->query($query);
+	$row = mysqli_fetch_array($result);
+	return $row["credit"];
 }
 ?>

@@ -84,7 +84,7 @@ function signin(){
 								</div>
 								<div class="form-group" style="width: 95%">
 									<i class="icofont-ui-password"></i>
-									<input type="text" name="user_signin_password" placeholder="Нууц үг" required="required" type="password">
+									<input name="user_signin_password" placeholder="Нууц үг" required="required" type="password">
 								</div>
 								<div class="form-group button" style="width: 95%">
 									<button type="submit" class="btn primary" onClick="signin()">Нэвтрэх</button>
@@ -101,11 +101,11 @@ function signin(){
 								</div>
 								<div class="form-group" style="width: 95%">
 									<i class="icofont-ui-password"></i>
-									<input type="text" name="user_signup_password1" placeholder="Нууц үг" required="required" type="password">
+									<input name="user_signup_password1" placeholder="Нууц үг" required="required" type="password">
 								</div>
 								<div class="form-group" style="width: 95%">
 									<i class="icofont-ui-password"></i>
-									<input type="text" name="user_signup_password2" placeholder="Нууц үг давтах" required="required" type="password">
+									<input name="user_signup_password2" placeholder="Нууц үг давтах" required="required" type="password">
 								</div>
 								<div class="form-group button" style="width: 95%">
 									<button type="submit" class="btn primary" onClick="signup()">Бүртгүүлэх</button>

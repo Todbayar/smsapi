@@ -86,5 +86,15 @@ if(isset($_COOKIE["userID"])){
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h5>Жишээ хэрэглээ</h5>
+					<h5>Postman</h5>
+					<img src="img/separator.png">
+					<img src="img/postman.jpg">
+				</div>
+			</div>
+		</div>
 	</div>
 </section>

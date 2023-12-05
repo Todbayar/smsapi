@@ -75,7 +75,7 @@ def run_sender():
 				mydb.commit()
 			print("================================")
 
-		time.sleep(15)
+		time.sleep(10)
 
 	#ser.close()
 
