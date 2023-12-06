@@ -5,13 +5,13 @@ include_once "constants.php";
 include_once "variables.php";
 
 if(isset($_POST["email"]) && isset($_POST["pass"])){
-	$query = "SELECT * FROM user WHERE email='".$_POST["email"]."' AND password='".$_POST["pass"]."' AND isactive=1";
+	$query = "SELECT * FROM user WHERE email='".$_POST["email"]."' AND isactive=1";
 	$result = $conn->query($query);
 	if(mysqli_num_rows($result)>0){
 		echo "<OK>:1";
 	}
 	else {
-		$query = "INSERT IGNORE INTO user (email, password, ip, lastlogged, signedup) VALUES ('".$_POST["email"]."', '".$_POST["pass"]."', '".get_client_ip()."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i'), DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i'))";
+		$query = "INSERT INTO user (email, password, ip, lastlogged, signedup) VALUES ('".$_POST["email"]."', '".$_POST["pass"]."', '".get_client_ip()."', DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i'), DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i'))";
 		if($result = $conn->query($query)){
 			$userID = mysqli_insert_id($conn);
 			
@@ -21,9 +21,7 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
 				$query = "INSERT INTO validater (value, state, type) VALUES ('".$userID."', 0, 0)";
 				if($result = $conn->query($query)){
 					$domain = $_SERVER['SERVER_NAME']!="localhost"?$_SERVER['SERVER_NAME']:$_SERVER['SERVER_NAME']."/smsapi";
-
 					$link = $protocol."://".$domain."/?emailverifier=".$userID;
-
 					$body = "Сайн байна уу? Энэ өдрийн мэндийг хүргье.<br/>Та энд <a href=\"".$link."\">Баталгаажуулах</a> дээр дарж SMSAPI.MN-рүү нэвтрэх имейлээ баталгаажуулна уу";
 					echo sendEmailVerification($_POST["email"], "Баталгаажуулалт", $body);
 				}
@@ -36,7 +34,18 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
 			}
 		}
 		else {
-			echo "FAIL 3";
+			if(mysqli_errno($conn)==1062){
+				$query = "SELECT * FROM user WHERE email='".$_POST["email"]."'";
+				$result = $conn->query($query);
+				$row = mysqli_fetch_array($result);
+				$domain = $_SERVER['SERVER_NAME']!="localhost"?$_SERVER['SERVER_NAME']:$_SERVER['SERVER_NAME']."/smsapi";
+				$link = $protocol."://".$domain."/?emailverifier=".$row["id"];
+				$body = "Сайн байна уу? Энэ өдрийн мэндийг хүргье.<br/>Та энд <a href=\"".$link."\">Баталгаажуулах</a> дээр дарж SMSAPI.MN-рүү нэвтрэх имейлээ баталгаажуулна уу";
+				echo sendEmailVerification($_POST["email"], "Баталгаажуулалт", $body);
+			}
+			else {
+				echo "FAIL 3";
+			}
 		}
 	}
 }
