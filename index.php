@@ -320,11 +320,11 @@ if(isset($_GET["emailverifier"])){
 											else {
 											?>
 <!--										<li class="apikey"><a href="?page=apikey.php">Түлхүүр</a></li>-->
-											<li class="testdrive"><a href="?page=testdrive.php">Шалгах</a></li>
+											<li class="testdrive"><a href="?page=testdrive.php">Илгээх</a></li>
+											<li class="list"><a href="?page=list.php">Хянах</a></li>
 											<li class="instructions"><a href="?page=instructions.php">Заавар</a></li>
 											<li class="profile"><a href="?page=profile.php">Хэрэглэгч</a></li>
 											<li class="price"><a href="?page=price.php">Цэнэглэх</a></li>
-											<li class="list"><a href="?page=list.php">Хянах</a></li>
 											<?php
 											}
 											?>
