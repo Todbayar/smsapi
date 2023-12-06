@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 29, 2023 at 03:46 PM
+-- Generation Time: Dec 06, 2023 at 03:05 PM
 -- Server version: 8.0.35-cll-lve
 -- PHP Version: 8.1.16
 
@@ -43,21 +43,23 @@ CREATE TABLE `action` (
 --
 
 INSERT INTO `action` (`id`, `type`, `phone`, `msg`, `state`, `token`, `created`, `sent`) VALUES
-(1, 0, '99213557', 'hello world test msg 1', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 14:50:22', '2023-11-29 15:18:25'),
-(2, 0, '99213557', 'hello world test msg 2', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:20:47', '2023-11-29 15:18:33'),
-(3, 0, '99213557', 'asd test ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:20:54', NULL),
-(4, 0, '99213557', 'лорыбөлрыбө ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:21:11', NULL),
-(5, 0, '99213557', 'йыбйы йбый ыб', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:21:26', NULL),
-(6, 0, '99213557', 'йыб йыб', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:22:41', NULL),
-(7, 0, '99213557', 'asd test 1', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:23:56', '2023-11-29 15:15:08'),
-(8, 0, '99213557', 'ыбө ыбө ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:24:00', NULL),
-(9, 0, '99213557', 'sadsdf sdf ыбөыбө ыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:25:16', NULL),
-(10, 0, '99213557', 'asdasd', 1, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:31:27', '2023-11-29 15:15:16'),
-(11, 0, '99213557', 'asdasd ыбөыбөыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:31:31', NULL),
-(12, 0, '99213557', 'ыбөыбөыбө ыбөыбөыб asdsdf', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:00', NULL),
-(13, 0, '99213557', 'ыбөыбөыбө ыбөыбөыб asdsdf 98798654654', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:09', NULL),
-(14, 0, '99213557', 'ыбөыбөыбө ыбөыбөыб 97654654', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:15', NULL),
-(15, 0, '99213557', 'asd ыбөыб өыб өыбө', 2, '7b3ce1fa8947b147c8ea188b99fa66e6', '2023-11-28 15:32:59', NULL);
+(1, 0, '99213557', 'hello world, this works ok', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 13:17:13', '2023-12-05 13:18:12'),
+(2, 0, '99213557', 'ok, this works fine.', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 13:22:24', '2023-12-05 13:22:38'),
+(3, 0, '99213557', 'ok works, last check', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 13:37:34', '2023-12-05 13:37:47'),
+(4, 0, '99213557', 'Nice works', 1, '30bfe519a829a3780aab1853fa5a4915', '2023-12-05 13:54:28', '2023-12-05 13:54:37'),
+(5, 0, '99455432', 'Hello', 1, '2e925c81450ce37c3d5ddd0d1b24f8e4', '2023-12-05 14:36:33', '2023-12-05 14:36:50'),
+(6, 0, '99213557', 'hello world, this works ok', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 15:09:21', '2023-12-05 15:09:31'),
+(7, 0, '99213557', 'hello world, this works ok', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 15:30:04', '2023-12-05 15:30:21'),
+(8, 0, '99213557', 'nice work good job', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 15:31:53', '2023-12-05 15:32:09'),
+(9, 0, '99213557', 'test msg 2023-12-5 1', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 15:34:03', '2023-12-05 15:34:14'),
+(10, 0, '99213557', 'test msg 2023-12-5 2', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 15:34:13', '2023-12-05 15:34:32'),
+(11, 0, '99213557', 'test msg 2023-12-5 3', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-05 15:35:31', '2023-12-05 15:35:40'),
+(12, 0, '95525128', 'hello world, mass sms works', 2, '0b137306cf67793c037149cce9c972e6', '2023-12-06 11:54:35', NULL),
+(14, 0, '99213557', 'hello world, works ok test drive', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-06 11:57:31', '2023-12-06 11:57:42'),
+(15, 0, '95525128', 'ok, works', 2, '0b137306cf67793c037149cce9c972e6', '2023-12-06 11:58:11', NULL),
+(16, 0, '95525128', 'test mass msg', 2, '0b137306cf67793c037149cce9c972e6', '2023-12-06 11:59:01', NULL),
+(17, 0, '99213557', 'test mass msg', 1, '0b137306cf67793c037149cce9c972e6', '2023-12-06 11:59:01', '2023-12-06 11:59:26'),
+(18, 0, '99213557', 'Test ok', 1, '30bfe519a829a3780aab1853fa5a4915', '2023-12-06 12:12:51', '2023-12-06 12:13:08');
 
 -- --------------------------------------------------------
 
@@ -78,7 +80,12 @@ CREATE TABLE `apikey` (
 --
 
 INSERT INTO `apikey` (`id`, `userID`, `title`, `token`, `credit`) VALUES
-(1, 1, NULL, '7b3ce1fa8947b147c8ea188b99fa66e6', 2);
+(1, 1, NULL, '0b137306cf67793c037149cce9c972e6', 86),
+(2, 2, NULL, '30bfe519a829a3780aab1853fa5a4915', 8),
+(3, 3, NULL, '2e925c81450ce37c3d5ddd0d1b24f8e4', 9),
+(4, 4, NULL, '14533e5d826b734c061a59c60499ca3a', 10),
+(5, 5, NULL, 'd8b7c07dd695a21b9ce49f4352ff617f', 10),
+(6, 0, NULL, '9ae18dea06298a9e3da1922f77e19170', 10);
 
 -- --------------------------------------------------------
 
@@ -113,7 +120,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `phone`, `ip`, `lastlogged`, `signedup`, `isactive`) VALUES
-(1, 'atodko0513@gmail.com', 'asd', NULL, NULL, '66.181.177.93', '2023-11-28 14:48:00', '2023-11-28 14:48:00', 1);
+(1, 'atodko0513@gmail.com', 'asd', 'Тодбаяр', '99213557', '66.181.177.93', '2023-12-06 14:35:00', '2023-12-05 13:15:00', 0),
+(2, 'misheelgamestudio@gmail.com', 'asd', NULL, NULL, '66.181.177.93', '2023-12-05 13:53:00', '2023-12-05 13:53:00', 1),
+(3, 'purevbaasankhuu@gmail.com', 'baaskaa2001', 'Баасанхүү', '99455432', '103.50.206.170', '2023-12-05 14:32:00', '2023-12-05 14:32:00', 1),
+(4, 'batbuyan@datacom.mn', 'hi}e6Yahth', NULL, NULL, '202.170.65.54', '2023-12-05 14:36:00', '2023-12-05 14:36:00', 0),
+(5, 'support@magicnet.mn', 'zee9kae(Th', NULL, NULL, '202.170.65.54', '2023-12-05 14:43:00', '2023-12-05 14:43:00', 0);
 
 -- --------------------------------------------------------
 
@@ -127,6 +138,14 @@ CREATE TABLE `validater` (
   `state` int UNSIGNED NOT NULL COMMENT '0=verifies, 1=verifying, 2=verified',
   `type` int UNSIGNED NOT NULL COMMENT 'type 0=email, 1=billing, 2=phone '
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `validater`
+--
+
+INSERT INTO `validater` (`id`, `value`, `state`, `type`) VALUES
+(4, '4', 0, 0),
+(5, '5', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -166,25 +185,25 @@ ALTER TABLE `validater`
 -- AUTO_INCREMENT for table `action`
 --
 ALTER TABLE `action`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `apikey`
 --
 ALTER TABLE `apikey`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `validater`
 --
 ALTER TABLE `validater`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

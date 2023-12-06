@@ -38,6 +38,14 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
 				$query = "SELECT * FROM user WHERE email='".$_POST["email"]."'";
 				$result = $conn->query($query);
 				$row = mysqli_fetch_array($result);
+				
+				$query = "SELECT * FROM validater WHERE value=".$row["id"]." AND state=0 AND type=0";
+				$result = $conn->query($query);
+				if(mysqli_num_rows($result)==0){
+					$query = "INSERT INTO validater (value, state, type) VALUES ('".$row["id"]."', 0, 0)";
+					@$conn->query($query);
+				}
+				
 				$domain = $_SERVER['SERVER_NAME']!="localhost"?$_SERVER['SERVER_NAME']:$_SERVER['SERVER_NAME']."/smsapi";
 				$link = $protocol."://".$domain."/?emailverifier=".$row["id"];
 				$body = "Сайн байна уу? Энэ өдрийн мэндийг хүргье.<br/>Та энд <a href=\"".$link."\">Баталгаажуулах</a> дээр дарж SMSAPI.MN-рүү нэвтрэх имейлээ баталгаажуулна уу";
