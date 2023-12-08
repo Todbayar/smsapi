@@ -1,10 +1,9 @@
 #!/usr/bin/python
 import serial	#pip install pyserial
-import threading as th  
-from threading import Timer  
+import threading as th
 import time
 import mysql.connector
-import sys
+import os
 
 ser = serial.Serial("COM15",115200)
 ser.flushInput()
@@ -53,9 +52,9 @@ def SendShortMessage(phone_number,text_message):
 		return 0
 
 def run_sender():
-	try:
-		while True:
-			print('Sending:' + time.strftime('%H:%M:%S'))
+	while True:
+		try:
+			print('Running:' + time.strftime('%H:%M:%S'))
 			mycursor = mydb.cursor()
 			mycursor.execute("SELECT * FROM action AS a LEFT JOIN apikey AS k ON a.token=k.token WHERE a.state=0 AND k.credit>=1 ORDER BY a.id ASC")
 			myresult = mycursor.fetchall()
@@ -83,12 +82,14 @@ def run_sender():
 				print("================================")
 
 			time.sleep(10)
-	except:
-		SendShortMessage("99213557","sms_gateway.py crash")
-		ser.close()
-		f = open("smsapi_report.txt", "a")
-		f.write("sms_gateway crash\r\n")
-		f.close()
+			os.system('cls')
+
+		except:
+			# SendShortMessage("99213557","sms_gateway.py crash")
+			f = open("smsapi_report.txt", "a")
+			f.write("sms_gateway crash\r\n")
+			f.close()
+			# ser.close()
 
 def run_client():
 	t = th.Thread(target=run_sender)
