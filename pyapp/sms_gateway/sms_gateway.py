@@ -10,13 +10,6 @@ ser.flushInput()
 rec_buff = ''
 isConfig = False
 
-mydb = mysql.connector.connect(
-		host="202.131.4.21",
-		user="zarchimn_99213557",
-		password="m?OzHo6&&~w$",
-		database="zarchimn_smsapi"
-	)
-
 def send_at(command,back,timeout):
 	rec_buff = ''
 	ser.write((command+'\r\n').encode())
@@ -55,6 +48,12 @@ def run_sender():
 	while True:
 		try:
 			print('Running:' + time.strftime('%H:%M:%S'))
+			mydb = mysql.connector.connect(
+				host="202.131.4.21",
+				user="zarchimn_99213557",
+				password="m?OzHo6&&~w$",
+				database="zarchimn_smsapi"
+			)
 			mycursor = mydb.cursor()
 			mycursor.execute("SELECT * FROM action AS a LEFT JOIN apikey AS k ON a.token=k.token WHERE a.state=0 AND k.credit>=1 ORDER BY a.id ASC")
 			myresult = mycursor.fetchall()
@@ -86,10 +85,13 @@ def run_sender():
 
 		except:
 			# SendShortMessage("99213557","sms_gateway.py crash")
-			f = open("smsapi_report.txt", "a")
-			f.write("sms_gateway crash\r\n")
-			f.close()
+			# f = open("smsapi_report.txt", "a")
+			# f.write("sms_gateway crash\r\n")
+			# f.close()
 			# ser.close()
+			print("sms_gateway crash")
+			time.sleep(10)
+			os.system('cls')
 
 def run_client():
 	t = th.Thread(target=run_sender)
